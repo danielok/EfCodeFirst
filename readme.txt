@@ -1,0 +1,1 @@
+Place for an EF project following scott gu's blog post
