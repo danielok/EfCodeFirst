@@ -1,8 +1,52 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<Mvc3CodeFirst.Domain.Dinner>
+
+@{
+    ViewBag.Title = "Dinners";
 }
 
-<h2>@ViewBag.Message</h2>
+<h2>Dinner</h2>
+
 <p>
-    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+    @Html.ActionLink("Create New", "Create")
 </p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Title
+        </th>
+        <th>
+            EventDate
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            HostedBy
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DinnerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DinnerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DinnerID })
+        </td>
+        <td>
+            @item.Title
+        </td>
+        <td>
+            @String.Format("{0:g}", item.EventDate)
+        </td>
+        <td>
+            @item.Address
+        </td>
+        <td>
+            @item.HostedBy
+        </td>
+    </tr>
+}
+
+</table>
+
